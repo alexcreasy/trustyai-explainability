@@ -1,6 +1,6 @@
 services:
   trustyai:
-    image: trustyai/trustyai-service:999-SNAPSHOT
+    image: quay.io/rgeada/trustyai-service:grafana-demo
     container_name: trustyai-service
     ports:
       - "8080:8080"
@@ -25,6 +25,19 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - prom_data:/prometheus
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
   generator-1:
     container_name: generator-1
     image: trustyai/trustyai-service-partial
