@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -312,7 +312,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": false,
+  "refresh": "",
   "schemaVersion": 38,
   "style": "dark",
   "tags": [],
@@ -347,7 +347,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -390,14 +390,14 @@
           "type": "prometheus",
           "uid": "PBFA97CFB590B2093"
         },
-        "definition": "query_result({model=\"$model\", metricName=~\"$metric\"})",
+        "definition": "query_result({model=\"$model\", metricName=~\"$metric\", metricName!~\"trustyai_model_\"})",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "request",
         "options": [],
         "query": {
-          "query": "query_result({model=\"$model\", metricName=~\"$metric\"})",
+          "query": "query_result({model=\"$model\", metricName=~\"$metric\", metricName!~\"trustyai_model_\"})",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -416,6 +416,6 @@
   "timezone": "",
   "title": "TrustyAI Default Dashboard",
   "uid": "a2a29df3-f2f8-4932-9797-86349d0f43d9",
-  "version": 7,
+  "version": 1,
   "weekStart": ""
 }
