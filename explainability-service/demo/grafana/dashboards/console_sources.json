@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -47,7 +47,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -142,7 +143,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               }
@@ -200,7 +202,7 @@
       },
       "id": 7,
       "panels": [],
-      "title": "All Metrics",
+      "title": "Current Metric",
       "type": "row"
     },
     {
@@ -243,6 +245,7 @@
               "mode": "off"
             }
           },
+          "links": [],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -261,12 +264,13 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 8,
+        "h": 15,
+        "w": 24,
         "x": 0,
         "y": 2
       },
       "id": 8,
+      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -298,6 +302,7 @@
           "refId": "A"
         }
       ],
+      "title": "$requestName",
       "transformations": [
         {
           "id": "renameByRegex",
@@ -377,12 +382,8 @@
       {
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": "3b9cbfc9-be4c-4b61-924c-e522255f7ef9",
+          "value": "3b9cbfc9-be4c-4b61-924c-e522255f7ef9"
         },
         "datasource": {
           "type": "prometheus",
@@ -390,8 +391,8 @@
         },
         "definition": "query_result({model=\"$model\", metricName=~\"$metric\", metricName!~\"trustyai_model_\"})",
         "hide": 0,
-        "includeAll": true,
-        "multi": true,
+        "includeAll": false,
+        "multi": false,
         "name": "request",
         "options": [],
         "query": {
@@ -403,17 +404,43 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "SPD Input-2 Low",
+          "value": "SPD Input-2 Low"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "query_result({model=\"$model\", metricName=~\"$metric\", metricName!~\"trustyai_model_\",  request=\"$request\"})",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "requestName",
+        "options": [],
+        "query": {
+          "query": "query_result({model=\"$model\", metricName=~\"$metric\", metricName!~\"trustyai_model_\",  request=\"$request\"})",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*requestName=\"([^\"]*).*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-15m",
-    "to": "now"
+    "from": "2023-08-10T09:29:56.467Z",
+    "to": "2023-08-10T09:39:46.165Z"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "TrustyAI Default Dashboard",
-  "uid": "a2a29df3-f2f8-4932-9797-86349d0f43d9",
-  "version": 1,
+  "title": "TrustyAI Visualization Sources",
+  "uid": "bdf3bc5d-7675-4a6f-ac7e-ac5ad55d1c77",
+  "version": 7,
   "weekStart": ""
 }
