@@ -14,6 +14,14 @@ services:
       LOG_LEVEL: "DEBUG"
     volumes:
       - ~/volumes/pvc/inputs:/inputs
+  trustyai-console:
+    image: trustyai-console
+    container_name: trustyai-console
+    ports:
+      - 8081:8080
+    environment:
+      TRUSTYAI_URL: http://trustyai:8080
+      GRAFANA_URL: http://grafana:3000
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -32,8 +40,12 @@ services:
       - 3000:3000
     restart: unless-stopped
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: true
+      GF_SECURITY_ALLOW_EMBEDDING: true
+      GF_SERVER_ROOT_URL: http://trustyai-console:8080/grafana/
+      GF_SERVER_SERVE_FROM_SUB_PATH: true
     volumes:
       - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
       - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
