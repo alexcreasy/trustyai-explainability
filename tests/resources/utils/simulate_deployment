@@ -1,0 +1,36 @@
+TEST_USER=clusteradminuser1
+TEST_PASS=developer
+LOCAL=true
+TEARDOWN=false
+MM_NAMESPACE=opendatahub-model
+
+MODEL_ALPHA=demo-loan-nn-onnx-alpha
+MODEL_BETA=demo-loan-nn-onnx-beta
+
+RESOURCEDIR="../resources"
+
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_01.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_02.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_03.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_04.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_05.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_06.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_07.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_08.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_09.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_10.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_11.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_12.json
+sleep 5
+$RESOURCEDIR/utils/send_data_batch $RESOURCEDIR/data/loan_default_batched/batch_13.json
